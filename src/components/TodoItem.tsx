@@ -8,6 +8,7 @@ export type TodoItemProps = {
 
 function TodoItem({ todo }: TodoItemProps) {
   const { onToggle, onRemove } = useTodoActions(todo.id);
+  // console.log(useTodoActions(todo.id));6y7r?""
 
   return (
     <li className={`TodoItem ${todo.done ? "done" : ""}`}>
@@ -22,4 +23,3 @@ function TodoItem({ todo }: TodoItemProps) {
 }
 
 export default TodoItem;
-

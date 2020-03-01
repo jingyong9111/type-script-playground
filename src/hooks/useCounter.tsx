@@ -1,6 +1,7 @@
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../modules";
 import { increase, decrease, increaseBy } from "../modules/counters";
+import { increaseAsync } from "../modules/counterAsync";
 import { useCallback } from "react";
 
 export default function useCounter() {
@@ -13,11 +14,15 @@ export default function useCounter() {
     (diff: number) => dispatch(increaseBy(diff)),
     [dispatch]
   );
+  const onIncreaseAsync = useCallback(() => dispatch(increaseAsync()), [
+    dispatch
+  ]);
 
   return {
     count,
     onIncrease,
     onDecrease,
-    onIncreaseBy
+    onIncreaseBy,
+    onIncreaseAsync
   };
 }
