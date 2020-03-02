@@ -1,11 +1,11 @@
 import React from "react";
-import Yong from "./yong";
 import Counter from "./counter";
 import MyForm from "./myForm";
 import Sample from "./sample";
 import CounterRedux from "./components/Counter";
 import TodoInsert from "./components/TodoInsert";
 import TodoList from "./components/TodoList";
+import Sample_redux from "./components/Sample";
 
 function App() {
   const onClick = (name: string) => {};
@@ -15,18 +15,23 @@ function App() {
 
   return (
     <div className="App">
-      <Yong name="Hello" onClick={onClick} />
+      <h1>Hook</h1>
+      <br />
       <Counter />
-      <MyForm onSubmit={onSubmit} />;
       <Sample />
+      <br />
+      <h1>리덕스</h1>
       <br />
       <CounterRedux />
       <br />
       <br />
-      <br />
-      <br />
       <TodoInsert />
       <TodoList />
+      <br />
+      <h1>redux-thunk</h1>
+      <br />
+      <br />
+      <Sample_redux />
     </div>
   );
 }

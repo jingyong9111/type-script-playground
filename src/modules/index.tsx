@@ -1,12 +1,20 @@
 //리듀서를 하나만 사용해야 하는데
 //combineReducers 라는 유틸 함수를 사용하여 쉽게 처리가능
 import { combineReducers } from "redux";
+// $ yarn add typesafe-actions
+
+import createStandardAction, {
+  ActionType,
+  createReducer
+} from "typesafe-actions";
 import counters from "./counters";
 import todos from "./todos";
+import sample from "./sample";
 
-const rootReducer = combineReducers({
+const rootReducer = combineReducers<any>({
   counters,
-  todos
+  todos,
+  sample
 });
 
 // 루트 리듀서를 내보내준다.
