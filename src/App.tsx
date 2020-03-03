@@ -5,7 +5,7 @@ import Sample from "./sample";
 import CounterRedux from "./components/Counter";
 import TodoInsert from "./components/TodoInsert";
 import TodoList from "./components/TodoList";
-import Sample_redux from "./components/Sample";
+import Sample_redux from "./hooks/testSample";
 
 function App() {
   const onClick = (name: string) => {};

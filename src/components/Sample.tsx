@@ -1,18 +1,16 @@
 import React, { useEffect } from "react";
 import useSample from "../hooks/useSample";
-import { getPost, getUsers } from "../modules/sample";
 
-type DataState = {};
+const Sample = ({ loadingPost, loadingUsers, users, post }: any) => {
+  const { state } = useSample();
+  // console.log("state", state);
 
-const Sample = ({ loadingPost, loadingUsers, users }: any) => {
-  const { state, onGetPost, post } = useSample();
-  console.log(state);
-  // console.log(onGetPost);
-  useEffect(() => {
-    getPost(1);
-    // getUsers(1)
-  }, [getPost, getUsers]);
-  console.log(post);
+  // useEffect(() => {
+  //   onGetPost(1);
+  //   onGetUsers();
+  // }, [onGetPost, onGetUsers]);
+
+  // console.log("이거", post);
   return (
     <>
       <section>
@@ -20,8 +18,8 @@ const Sample = ({ loadingPost, loadingUsers, users }: any) => {
         {loadingPost && "로딩.. 중"}
         {!loadingPost && post && (
           <div>
-            {/* <h3>{post.title}</h3>
-            <h3>{post.body}</h3> */}
+            <h3>{post.title}</h3>
+            <h3>{post.body}</h3>
           </div>
         )}
       </section>

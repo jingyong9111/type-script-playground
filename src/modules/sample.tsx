@@ -40,15 +40,15 @@ export const getPost = (id: number) => async (dispatch: any) => {
       type: GET_POST_FAILURS,
       payload: e,
       error: true
-    }); // 에러
+    }); // 에러`
     throw e; // 컴포넌트단에서 에러를 조회할 수 있게 해준다.
   }
 };
 
-export const getUsers = () => async (dispatch: any) => {
+export const getUsers = (id: number) => async (dispatch: any) => {
   dispatch({ type: GET_USERS }); // 요청 시작을 알림
   try {
-    const res = await api.getUsers();
+    const res = await api.getUsers(id);
     dispatch({
       type: GET_USERS_SUCCESS,
       plyload: res.data

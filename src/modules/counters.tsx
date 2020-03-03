@@ -1,3 +1,8 @@
+import createStandardAction, {
+  ActionType,
+  createReducer
+} from "typesafe-actions";
+
 // 액션 타입 선언
 // 뒤에 as const 를 붙여줌으로써 나중에 액션 객체를 만들게 action.type 의 값을 추론하는 과정에서
 // action.type 이 string 으로 추론되지 않고 'counter/INCREASE' 와 같이 실제 문자열 값으로 추론 되도록 해준다.
@@ -41,20 +46,25 @@ const initialState: CounterState = {
 // 리듀서를 작성
 // 리듀서에서는 state 와 함수의 반환값이 일치하도록 작성
 // 액션에서는 우리가 방금 만든 CounterAction을 타입으로 설정
-function counter(
-  state: CounterState = initialState,
-  action: CounterAction
-): CounterState {
-  switch (action.type) {
-    case INCREASE:
-      return { count: state.count + 1 };
-    case DECREASE:
-      return { count: state.count - 1 };
-    case INCREASE_BY:
-      return { count: state.count + action.payload };
-    default:
-      return state;
-  }
-}
+// function counter(
+//   state: CounterState = initialState,
+//   action: CounterAction
+// ): CounterState {
+//   switch (action.type) {
+//     case INCREASE:
+//       return { count: state.count + 1 };
+//     case DECREASE:
+//       return { count: state.count - 1 };
+//     case INCREASE_BY:
+//       return { count: state.count + action.payload };
+//     default:
+//       return state;
+//   }
+// }
+const counter = createReducer<CounterState, CounterAction>(initialState, {
+  [INCREASE]: state => ({ count: state.count + 1 }),
+  [DECREASE]: state => ({ count: state.count - 1 }),
+  [INCREASE_BY]: (state, action) => ({ count: state.count + action.payload })
+});
 
 export default counter;
